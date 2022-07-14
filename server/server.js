@@ -17,7 +17,7 @@ db.sequelize.sync();
 require('./api')(app)
 
 app.get('/*', function (req, res) {
-  res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  res.sendFile(path.resolve('client', 'build', 'index.html'));
 });
 
 
