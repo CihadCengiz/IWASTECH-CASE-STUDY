@@ -16,9 +16,9 @@ db.sequelize.sync();
 
 require('./api')(app)
 
-app.get('/*', function (req, res) {
-  res.sendFile(path.resolve('client', 'build', 'index.html'));
-});
+// app.get('/*', function (req, res) {
+//   res.sendFile('client', 'build', 'index.html');
+// });
 
 
 const PORT = process.env.PORT || 3000;
