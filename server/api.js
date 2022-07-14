@@ -65,4 +65,14 @@ module.exports = (app) => {
     router.delete("/publishers/:id", publishers.delete);
     // Delete all Books
     router.delete("/publishers", publishers.deleteAll);
+
+    if (process.env.NODE_ENV === 'production') {
+      // Serve any static files
+      app.use('client/build', express.static(path.join(__dirname, '/')));
+      // Handle React routing, return all requests to React app
+      app.get('*', function(req, res) {
+        res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+          });
+    }
+    
 };
