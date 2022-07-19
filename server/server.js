@@ -16,14 +16,7 @@ db.sequelize.sync();
 
 require('./api')(app)
 
-if (process.env.NODE_ENV === 'production') {
-  // Serve any static files
-  app.use('client/build', express.static(path.join(__dirname, '/')));
-  // Handle React routing, return all requests to React app
-  app.get('*', function(req, res) {
-    res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
-      });
-}
+app.use(express.static(path.join(__dirname, './../build')));
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
